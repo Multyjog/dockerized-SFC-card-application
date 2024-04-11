@@ -23,15 +23,12 @@
 <script setup lang="ts">
 import { ref } from "vue";
 const emit = defineEmits<{
-  (
-    e: "submit",
-    value: { vueCode: string | null; cssCode: string | null }
-  ): void;
+  (e: "submit", value: { vueCode: string; cssCode: string }): void;
 }>();
 
 const formData = ref({
-  vueCode: null,
-  cssCode: null,
+  vueCode: "",
+  cssCode: "",
 });
 const onSubmit = () => {
   emit("submit", formData.value);

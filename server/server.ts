@@ -2,6 +2,7 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as fs from "fs";
 import * as yaml from "js-yaml";
+import { IFormData } from "../interfaces";
 
 const app = express();
 const port = 3000;
@@ -22,7 +23,11 @@ app.post("/data", (req, res) => {
     const data = req.body;
     const yamlStr = yaml.dump(data);
     fs.writeFileSync("data.yaml", yamlStr, "utf8");
-    fs.writeFileSync("../SFC/styles.css", data.cssCode, "utf8");
+    fs.writeFileSync(
+      "../korvax-test-admin/src/custom-styles.css",
+      data.cssCode,
+      "utf8"
+    );
     res.status(200).send({ message: "Data stored successfully" });
   } catch (e) {
     console.log("THIS IS AN ERR:", e);
@@ -32,7 +37,16 @@ app.post("/data", (req, res) => {
 app.get("/data", (req, res) => {
   try {
     const fileContents = fs.readFileSync("data.yaml", "utf8");
-    const data = yaml.load(fileContents);
+    const data = yaml.load(fileContents) as IFormData;
+    if (data.vueCode === null) {
+      res.status(200).send(data);
+      return;
+    }
+    fs.writeFileSync(
+      "../korvax-test-admin/src/custom-styles.css",
+      data.cssCode,
+      "utf8"
+    );
     res.status(200).send(data);
   } catch (e) {
     res.status(500).send({ error: "Error reading data", details: e.message });

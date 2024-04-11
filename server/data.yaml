@@ -1,2 +1,5 @@
-vueCode: <h2 class="test">You are dasdadasdassdasd awesome!!</h2>
-cssCode: '.test {color: blue;}'
+vueCode: ''
+cssCode: |-
+  h1 {
+  color: red;
+  }
