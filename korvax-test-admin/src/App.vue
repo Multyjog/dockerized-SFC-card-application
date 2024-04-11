@@ -3,6 +3,8 @@
   <div class="form-wrapper">
     <CardEdit @submit="onCardEdit" />
     <MyComponent
+      :html="overrideHTML"
+      :css="overrideCSS"
       title="Card title"
       msg="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates repudiandae quidem repellendus ex, perspiciatis sapiente, corporis soluta vero libero at reprehenderit rem deleniti ab aliquid!"
       imgSrc="https://via.assets.so/game.png?id=1&q=95&w=360&h=360&fit=fill"
@@ -11,11 +13,14 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import CardEdit from "./components/CardEdit.vue";
 import MyComponent from "../../SFC/CustomCard.vue"; // Adjust the path accordingly
 import { IFormData } from "../../interfaces.ts";
 import api from "../../api.ts"; // Adjust the path according to your project structure
+
+const overrideHTML = ref(null);
+const overrideCSS = ref(null);
 
 const onCardEdit = (e: IFormData) => {
   api
@@ -30,7 +35,9 @@ const onCardEdit = (e: IFormData) => {
 async function fetchItems() {
   try {
     const response = await api.get("/data");
-    console.log(response);
+    overrideHTML.value = response.data.vueCode;
+    overrideCSS.value = response.data.cssCode;
+    console.log("DATA:", response.data.value);
   } catch (error) {
     console.error("Error fetching items:", error);
   }

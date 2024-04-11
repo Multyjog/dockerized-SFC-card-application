@@ -1,6 +1,6 @@
 <template v-slot:default>
   <div class="card">
-    <div v-if="condition">This is shown if the condition is true.</div>
+    <div v-if="condition" v-html="html"></div>
     <div v-else>
       <img :src="imgSrc" alt="" />
       <h2>{{ title }}</h2>
@@ -12,7 +12,13 @@
 
 <script setup lang="ts">
 const condition = true;
-defineProps({ imgSrc: String, title: String, msg: String });
+defineProps({
+  imgSrc: String,
+  title: String,
+  msg: String,
+  html: HTMLElement,
+  css: CSS,
+});
 </script>
 
 <style scoped>

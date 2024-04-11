@@ -1,2 +1,5 @@
 - How to create separate vue component which can be embded into any vue.js project
 - How to dockerize all that stuff
+
+
+- Hot refresh of the component in admin panel
