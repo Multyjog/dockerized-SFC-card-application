@@ -22,6 +22,7 @@ app.post("/data", (req, res) => {
     const data = req.body;
     const yamlStr = yaml.dump(data);
     fs.writeFileSync("data.yaml", yamlStr, "utf8");
+    fs.writeFileSync("../SFC/styles.css", data.cssCode, "utf8");
     res.status(200).send({ message: "Data stored successfully" });
   } catch (e) {
     console.log("THIS IS AN ERR:", e);

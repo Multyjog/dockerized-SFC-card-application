@@ -11,13 +11,13 @@
 </template>
 
 <script setup lang="ts">
+import "./styles.css";
 const condition = true;
 defineProps({
   imgSrc: String,
   title: String,
   msg: String,
-  html: HTMLElement,
-  css: CSS,
+  html: String,
 });
 </script>
 

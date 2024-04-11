@@ -1,2 +1,2 @@
 vueCode: <h2 class="test">You are dasdadasdassdasd awesome!!</h2>
-cssCode: null
+cssCode: '.test {color: blue;}'

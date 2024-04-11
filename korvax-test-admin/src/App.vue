@@ -4,7 +4,6 @@
     <CardEdit @submit="onCardEdit" />
     <MyComponent
       :html="overrideHTML"
-      :css="overrideCSS"
       title="Card title"
       msg="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates repudiandae quidem repellendus ex, perspiciatis sapiente, corporis soluta vero libero at reprehenderit rem deleniti ab aliquid!"
       imgSrc="https://via.assets.so/game.png?id=1&q=95&w=360&h=360&fit=fill"
@@ -20,7 +19,6 @@ import { IFormData } from "../../interfaces.ts";
 import api from "../../api.ts"; // Adjust the path according to your project structure
 
 const overrideHTML = ref(null);
-const overrideCSS = ref(null);
 
 const onCardEdit = (e: IFormData) => {
   api
@@ -36,13 +34,18 @@ async function fetchItems() {
   try {
     const response = await api.get("/data");
     overrideHTML.value = response.data.vueCode;
-    overrideCSS.value = response.data.cssCode;
-    console.log("DATA:", response.data.value);
+    // overrideCSS.value = response.data.cssCode;
   } catch (error) {
     console.error("Error fetching items:", error);
   }
 }
-onMounted(fetchItems);
+onMounted(() => {
+  fetchItems();
+  // const link = document.createElement("link");
+  // link.rel = "stylesheet";
+  // link.href = "./styles.css";
+  // document.head.appendChild(link);
+});
 </script>
 
 <style scoped>
