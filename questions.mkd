@@ -1,4 +1,4 @@
 - How to dockerize all that stuff
 
-
+<!-- TODO: -->
 - Hot refresh of the component in admin panel
