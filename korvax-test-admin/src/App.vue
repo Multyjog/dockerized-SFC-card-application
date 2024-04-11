@@ -41,10 +41,6 @@ async function fetchItems() {
 }
 onMounted(() => {
   fetchItems();
-  // const link = document.createElement("link");
-  // link.rel = "stylesheet";
-  // link.href = "./styles.css";
-  // document.head.appendChild(link);
 });
 </script>
 
