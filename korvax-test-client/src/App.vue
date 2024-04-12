@@ -1,7 +1,6 @@
 <template>
-  Админский интерфейс
-  <div class="form-wrapper">
-    <CardEdit @submit="onCardEdit" />
+  Клиентская страница
+  <div class="client-page">
     <CustomCard
       :overrideHTML="overrideHTML"
       :applyCustomHTML="applyCustomHTML"
@@ -15,12 +14,8 @@ import { IFormData } from "../../interfaces.ts";
 import api from "../../api.ts";
 
 const CustomCard = defineAsyncComponent(
-  () => import("./components/CustomCard.vue")
+  () => import("../../korvax-test-admin/src/components/CustomCard.vue")
 );
-const CardEdit = defineAsyncComponent(
-  () => import("./components/CardEdit.vue")
-);
-
 onMounted(() => {
   fetchItems();
 });
@@ -40,24 +35,14 @@ const fetchItems = async () => {
 const setNewTemplate = (data: IFormData) => {
   overrideHTML.value = data.vueCode;
 };
-const onCardEdit = (e: IFormData) => {
-  api
-    .post("/data", e)
-    .then((res) => {
-      setNewTemplate(res.data);
-    })
-    .catch((e) => {
-      console.log(e);
-    });
-};
 </script>
 
-<style scoped>
-.form-wrapper {
+<style>
+.client-page {
   max-width: 800px;
   min-height: 450px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   background: #f1f1f1;
   padding: 30px;
   border-radius: 5px;

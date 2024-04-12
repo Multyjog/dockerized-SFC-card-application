@@ -37,6 +37,7 @@ const onSubmit = () => {
 
 <style scoped>
 .inputs {
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

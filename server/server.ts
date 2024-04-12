@@ -28,7 +28,7 @@ app.post("/data", (req, res) => {
       data.cssCode,
       "utf8"
     );
-    res.status(200).send({ message: "Data stored successfully" });
+    res.status(200).send({ ...data });
   } catch (e) {
     console.log("THIS IS AN ERR:", e);
   }
@@ -37,6 +37,9 @@ app.post("/data", (req, res) => {
 app.get("/data", (req, res) => {
   try {
     const fileContents = fs.readFileSync("data.yaml", "utf8");
+    if (fileContents === "") {
+      res.status(200).send("");
+    }
     const data = yaml.load(fileContents) as IFormData;
     if (data.vueCode === null) {
       res.status(200).send(data);
