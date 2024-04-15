@@ -10,11 +10,11 @@
 
 <script setup lang="ts">
 import { ref, onMounted, computed, defineAsyncComponent } from "vue";
-import { IFormData } from "./interfaces.ts";
-import api from "./api.ts";
+import { IFormData } from "../../shared/interfaces.ts";
+import api from "../../shared/api.ts";
 
 const CustomCard = defineAsyncComponent(
-  () => import("../../korvax-test-admin/src/components/CustomCard.vue")
+  () => import("../../shared/CustomCard.vue")
 );
 onMounted(() => {
   fetchItems();
