@@ -1,0 +1,7 @@
+## Hello
+### This is my test project for korvax employment
+
+Steps to run the app:
+- Copy repo to your local machine
+- In the project folder, run:
+    ```docker compose up```
