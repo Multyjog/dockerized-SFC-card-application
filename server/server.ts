@@ -2,7 +2,7 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as fs from "fs";
 import * as yaml from "js-yaml";
-import { IFormData } from "../interfaces";
+import { IFormData } from "./interfaces";
 
 const app = express();
 const port = 3000;

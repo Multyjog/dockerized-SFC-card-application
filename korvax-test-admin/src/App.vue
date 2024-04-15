@@ -11,11 +11,11 @@
 
 <script setup lang="ts">
 import { ref, onMounted, computed, defineAsyncComponent } from "vue";
-import { IFormData } from "../../interfaces.ts";
-import api from "../../api.ts";
+import { IFormData } from "./interfaces.ts";
+import api from "./api.ts";
 
 const CustomCard = defineAsyncComponent(
-  () => import("./components/CustomCard.vue")
+  () => import("../../shared/CustomCard.vue")
 );
 const CardEdit = defineAsyncComponent(
   () => import("./components/CardEdit.vue")
