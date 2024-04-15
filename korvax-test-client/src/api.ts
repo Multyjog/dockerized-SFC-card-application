@@ -15,13 +15,4 @@ api.get = function (url, params) {
   });
 };
 
-// POST method
-api.post = function (url, data) {
-  return this.request({
-    method: "post",
-    url,
-    data,
-  });
-};
-
 export default api;
