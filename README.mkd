@@ -1,5 +1,5 @@
 ## Hello
-### This is my test project for korvax employment
+### This is my training project to setup a docker and docker-compose in something like a monorepo structure
 
 Steps to run the app:
 - Copy repo to your local machine
